@@ -24,4 +24,14 @@ let state = {
     }
 }
 
+export let addPost = (newDialog) => {
+    let newPost = {
+        id: 3,
+        message: newDialog,
+        likesCount: 0
+    };
+
+    state.profilePage.posts.push(newPost);
+}
+
 export default state;
