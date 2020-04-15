@@ -25,7 +25,8 @@ let state = {
             {id:1, message:'Hello'},
             {id:2, message:'How are you, Bek?'},
             {id:3, message:'Fine'}
-        ]
+        ],
+        newMessage: 'where' //I am add
     },
     sidebar: {}
 }
@@ -47,5 +48,22 @@ export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
+
+// I am add, at
+export let addMessage = () => {
+    let newMessage = {
+        id: 4,
+        message: state.dialogsPage.newMessage
+    };
+    state.dialogsPage.messages.push(newMessage);
+    rerenderEntireTree(state);
+    state.dialogsPage.newMessage = '';
+}
+
+export let updateNewMessage = (newText) => {
+    state.dialogsPage.newMessage = newText;
+    rerenderEntireTree(state);
+}
+// here
 
 export default state;
