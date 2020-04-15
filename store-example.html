@@ -1,0 +1,82 @@
+<script>
+
+   // let man = {
+   //     name: "Dmitry",
+   //     age: 31,
+   //     sayName() {
+   //         alert(this.name)
+   //     }
+   // }
+   //
+   // man.sayName();
+   //
+   // let page = {
+   //     title: 'samuraiJS',
+   //     content: ``,
+   //     render () {
+   //         document.title = this.title;
+   //         document.write(this.content);
+   //     }
+   // }
+   // page.content = `<div>Content about React JS</div>`;
+   // page.render();
+
+   /*let page2 = {
+       title: 'samuraiJs',
+       _content: ``,
+
+       setContent(value) {
+           this._content = value;
+       },
+
+       getContent() {
+           return this._content;
+       },
+
+       render: function () {
+            document.write(this._content)
+       }
+   }
+
+   page2.setContent(`<div>Content about React JS</div>`);
+   console.log( page2.getContent() );
+   page2.render();*/
+
+   /////////////////////
+
+   let store = {
+       _subscriber() {
+           console.log('no subscribers (observers)')
+       },
+       _state: {
+           firstName: "bek",
+           lastName: "abdi"
+       },
+       getState() {
+           return this._state;
+       },
+       subscribe(observer) {
+           this._subscriber = observer;
+       },
+       setFirstName(value) {
+           this._state.firstName = value;
+           this._subscriber();
+       }
+   }
+
+   // store._state
+   let state = store.getState();
+   console.log(state);
+   store.setFirstName('samuraiJs.com');
+   console.log(state);
+   state = store.getState();
+   console.log(state);
+
+   store.subscribe( () => {
+       let state = store.getState();
+   });
+   console.log(state);
+
+   store.setFirstName('youtube');
+   console.log(state);
+</script>
