@@ -14,27 +14,28 @@ const Dialogs = (props) => {
     let sendMessage = () => {
         props.dispatch(addMessageActionCreator());
     }
-    let onChangeMessage = () => {
-        let text = newDialogElement.current.value;
-        props.dispatch(updateNewMessageActionCreator(text));
+    let onChangeMessage = (event) => {
+        let body = event.target.value;
+        props.dispatch(updateNewMessageActionCreator(body));
     }
     // here
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-               {dialog}
+                {dialog}
             </div>
             <div className={s.messages}>
-                {message}
+                <div>{message}</div>
+                <div>
+                    <textarea onChange={onChangeMessage} value={props.state.newMessage}></textarea>
+                </div>
+                <div>
+                    <button onClick={sendMessage}>Send</button>
+                </div>
             </div>
 
             {/*I am add, at*/}
-            <div>
-                <textarea onChange={onChangeMessage} value={props.state.newMessage} ref={newDialogElement}></textarea>
-            </div>
-            <div>
-                <button onClick={sendMessage}>Send</button>
-            </div>
+
             {/*here*/}
 
         </div>

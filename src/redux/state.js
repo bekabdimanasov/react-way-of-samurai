@@ -29,7 +29,7 @@ export let store = {
                 {id:2, message:'How are you, Bek?'},
                 {id:3, message:'Fine'}
             ],
-            newMessage: 'where' //I am add
+            newMessage: '' //I am add
         },
         sidebar: {}
     },
@@ -69,7 +69,7 @@ export let store = {
             this._callSubscriber(this._state);
             this._state.dialogsPage.newMessage = '';
         } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            this._state.dialogsPage.newMessage = action.newText;
+            this._state.dialogsPage.newMessage = action.body;
             this._callSubscriber(this._state);
         }
         // here
@@ -79,7 +79,7 @@ export let store = {
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE, newText: text});
+export const updateNewMessageActionCreator = (body) => ({type: UPDATE_NEW_MESSAGE, body: body});
 
 export default store;
 
