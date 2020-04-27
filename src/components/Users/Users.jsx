@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from "./Users.module.css";
 import userPhoto from '../../assets/images/user.jpg'
+import {NavLink} from "react-router-dom";
 
 // Presentation Component
 const Users = (props) => {
@@ -14,7 +15,9 @@ const Users = (props) => {
             <div>
                 {pages.map(p => {
                     return (<span className={props.currentPage === p && styles.selectedPage}
-                                  onClick={ (e) => { props.onPageChanged(p); } }> {p} </span>)
+                                  onClick={(e) => {
+                                      props.onPageChanged(p);
+                                  }}> {p} </span>)
                 })}
             </div>
             {
@@ -22,9 +25,11 @@ const Users = (props) => {
                     <div key={u.id}>
                         <span>
                             <div>
+                                <NavLink to={'/profile/' + u.id}>
                                 <img className={styles.photos}
                                      src={u.photos.small != null ? u.photos.small : userPhoto}/>
-                            </div>
+                                </NavLink>
+                                </div>
                             <div>
                                 {u.followed
                                     ? <button onClick={() => {
